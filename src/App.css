@@ -31,3 +31,10 @@
     transform: rotate(360deg);
   }
 }
+
+.map {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  margin-top: 100px;
+}
