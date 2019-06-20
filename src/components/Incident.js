@@ -99,6 +99,7 @@ class Incident extends Component {
   }
 
   render() {
+    console.log(`${this.state.incident_number}`);
     // Text formatting
     const incident_address = `${this.state.address}  ${this.state.city}, VA`;
     const weather_text = `It's ${this.state.weather.temp} degrees in ${
@@ -132,7 +133,10 @@ class Incident extends Component {
             <p>{weather_text}</p>
           </div>
         </div>
-        <Map coords={this.state.coords} />
+        <Map
+          coords={this.state.coords}
+          incident_number={this.state.incident_number}
+        />
       </>
     );
   }

@@ -22,7 +22,8 @@ class Map extends Component {
       marker: {
         lat: 0,
         lng: 0
-      }
+      },
+      incident_number: this.props.incident_number
     };
   }
 
@@ -43,7 +44,8 @@ class Map extends Component {
         marker: {
           lat: nextProps.coords.lat,
           lng: nextProps.coords.lng
-        }
+        },
+        incident_number: nextProps.incident_number
       });
     }
   }
@@ -56,6 +58,10 @@ class Map extends Component {
           {...this.state.viewport}
           onViewportChange={this.onViewportChange}
         >
+          <div>
+            <strong>Incident Number: </strong>
+            {this.props.incident_number}
+          </div>
           <Marker
             latitude={this.state.marker.lat}
             longitude={this.state.marker.lng}
