@@ -14,7 +14,7 @@ Relevant source code: https://github.com/typicode/json-server/blob/master/src/cl
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const path = require("path");
-const router = jsonServer.router(path.join(__dirname, "db (copy).json"));
+const router = jsonServer.router(path.join(__dirname, "data.json"));
 
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults({
@@ -63,12 +63,12 @@ server.listen(port, () => {
 // Centralized logic
 
 // Returns a URL friendly slug
-function createSlug(value) {
-  return value
-    .replace(/[^a-z0-9_]+/gi, "-")
-    .replace(/^-|-$/g, "")
-    .toLowerCase();
-}
+// function createSlug(value) {
+//   return value
+//     .replace(/[^a-z0-9_]+/gi, "-")
+//     .replace(/^-|-$/g, "")
+//     .toLowerCase();
+// }
 
 // function validateCourse(course) {
 //   if (!course.title) return "Title is required.";

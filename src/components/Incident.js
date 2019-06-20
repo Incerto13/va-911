@@ -73,8 +73,6 @@ class Incident extends Component {
     const apiKey = "6befa011b9a58b55a058613d57a609fa";
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
-    console.log(`getWeather() function was launched and cit is... ${city}`);
-
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -102,7 +100,7 @@ class Incident extends Component {
 
   render() {
     // Text formatting
-    const incident_address = `${this.state.address}  ${this.state.city},VA`;
+    const incident_address = `${this.state.address}  ${this.state.city}, VA`;
     const weather_text = `It's ${this.state.weather.temp} degrees in ${
       this.state.city
     } with ${this.state.weather.description}.
@@ -114,7 +112,7 @@ class Incident extends Component {
     return (
       <>
         <div className="jumbotron">
-          <h4 className="">RichMond, VA 911 Incident Validation</h4>
+          <h4 className="">Richmond, VA 911 Incident Validation</h4>
           <hr />
           <div className="details">
             <b>Incident Number</b>
