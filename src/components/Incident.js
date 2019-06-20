@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import getIncident from "../api/incidentApi";
-import MapContainer from "./MapContainer";
+import Map from "./Map";
 
 class Incident extends Component {
   constructor(props) {
@@ -9,10 +9,18 @@ class Incident extends Component {
     this.state = {
       address: "",
       city: "",
-      latitude: 0,
-      longitude: 0,
+      coords: {
+        // initialize map in Brooklyn
+        latitude: 40.6782,
+        longitude: -73.9442
+      },
       weather: "",
-      parcel: ""
+      parcel: "",
+      place_name: "",
+      comments: "",
+      incident_number: "",
+      summary: "",
+      time_opended: ""
     };
 
     this.loadIncident = this.loadIncident.bind(this);
@@ -23,10 +31,26 @@ class Incident extends Component {
     getIncident("address")
       .then(address => {
         this.setState({
-          address: address["address_line1"],
-          city: address["city"],
-          longitude: address["longitude"],
-          latitude: address["latitude"]
+          address: address.address_line1,
+          city: address.city,
+          place_name: address.common_place_name,
+          coords: {
+            lat: address.latitude,
+            lng: address.longitude
+          }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    getIncident("description")
+      .then(description => {
+        this.setState({
+          comments: description.comments,
+          incident_number: description.incident_number,
+          summary: description.subtype,
+          time_opended: description.event_opened
         });
       })
       .catch(error => {
@@ -77,17 +101,40 @@ class Incident extends Component {
   }
 
   render() {
-    const coords = {
-      lng: this.state.longitude,
-      lat: this.state.latitude
-    };
-    console.log(coords);
-    console.log(this.state.longitude);
-    console.log(this.state.weather);
+    // Text formatting
+    const incident_address = `${this.state.address}  ${this.state.city},VA`;
+    const weather_text = `It's ${this.state.weather.temp} degrees in ${
+      this.state.city
+    } with ${this.state.weather.description}.
+          The expected high temp is ${
+            this.state.weather.maxTemp
+          } and expected low temp is ${this.state.weather.minTemp},
+          with wind gusts up to ${this.state.weather.wind} mph.`;
+
     return (
       <>
-        <h1 className="jumbotron">RichMond, VA 911 Incident Validation</h1>
-        <MapContainer initialCenter={coords} />
+        <div className="jumbotron">
+          <h4 className="">RichMond, VA 911 Incident Validation</h4>
+          <hr />
+          <div className="details">
+            <b>Incident Number</b>
+            <p>{this.state.incident_number}</p>
+            <b>Date & Time </b>
+            <p>{this.state.time_opended}</p>
+            <b>Location</b>
+            <p>{this.state.place_name}</p>
+            <b>Address</b>
+            <p>{incident_address}</p>
+            <b>Incident Type / Summary</b>
+            <p>{this.state.summary}</p>
+            <b>Notes / Description</b>
+            <p>{this.state.comments}</p>
+
+            <b>Weather:</b>
+            <p>{weather_text}</p>
+          </div>
+        </div>
+        <Map coords={this.state.coords} />
       </>
     );
   }
