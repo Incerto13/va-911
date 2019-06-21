@@ -10,7 +10,7 @@ Install dependencies
 
 #### `npm install`
 
-## Loadig the Incident File
+## Loading the Incident File
 
 (1) Rename the incident file `raw_incident.json`
 (2) Place the incident file in the project directory in the `/tools/upload/` directory
