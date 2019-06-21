@@ -12,7 +12,7 @@ Install dependencies
 
 ## Loading the Incident File
 
-(1) Rename the incident file `raw_incident.json`
+(1) Rename the incident file `raw_incident.json`<br>
 (2) Place the incident file in the project directory in the `/tools/upload/` directory
 
 ## Run Application
