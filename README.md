@@ -2,17 +2,18 @@
 
 Clone project
 
-#### `git clone git@github.com:vbence86/prominent-edge-test-app.git`
+#### `git clone ghttps://github.com/Incerto13/va-911.git`
 
-Install Node and Npm if not available
-
-#### `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash`
-
-#### `nvm install node`
+Note: Requires Node and npm
 
 Install dependencies
 
 #### `npm install`
+
+## Loadig the Incident File
+
+(1) Rename the incident file `raw_incident.json`
+(2) Place the incident file in the project directory in the `/tools/upload/` directory
 
 ## Run Application
 
@@ -23,34 +24,18 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-#### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-#### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Note: runs the mock api on (http://localhost:3001)
 
 ## Did you complete the project?
 
-I have not completed the project due to unresolved issues with `ArcGIS Server REST API` `query` service. Although I have carefully studied the API documentation and attempted to send the right coordinates with the linked spatial reference number the service kept responding with zero results. After having invested around 1-2 hours to unpuzzle what parts of my requests had been incorrect and in spite of the working examples I turned my attention away from this section and focused on the rest of the test.
+I completed everthing other than the `ArcGIS Server REST API` `query`. This Api was very poorly documented and after several hours I decided to move on and ignore the `parcel` portion of the assignment. Nevertheless, to display my backend capabilities I decided to create a mock api for the incident data (I realize this wasn't necessary and easily could have just read the file contents via node as I did in the `sanitizeData.js` file) just to display my capabilties in this realm.
+
+Also my weather data is current and not historical as of the time of the incident. I was not able to find a free api that had historical data that went further back than just a few days at the most.
 
 ## How much time did you spend on the project?
 
-I've spent 7 hours in total. 2 hours of unpacking the problem with the `ArcGIS Server` described above, 4 hours of implementation and 1 hour of wrapping up the project.
+I spent a total of 18 hours on this over the past few days. Trying to get the ArcGIS Server to work took almost 7 of those hours. Wrangling with the Google Maps Rect Api also took a considerable amount of time (I had never used it before) but ultimately I found mapbox much more straighforward and switched to that.
 
 ## Demo
 
-![ezgif com-video-to-gif 1](https://user-images.githubusercontent.com/6104164/52496275-32176a80-2bd3-11e9-80ea-799b8168c878.gif)
-
-## Tech Stack of mychoice
-
-- Created a very basic React application bootstrapted by `create-react-app` CLI tool.
-- Reused existing React components such as `reach-google-maps`, `react-dropzone` or `react-spinners`.
-- Employed `react-scripts` a collection of build tools for rapid app development with React.
-- `RESTClient`, a simple implementation of a REST client though made by myself but out of the scope of this assessement.
-- GitHub Pages CLI tool to deploy the application on GitHub Pages
+![](va-911-demo.gif)

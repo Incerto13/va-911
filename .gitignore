@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# data
+/tools/upload
+data.json
+raw_incident.json
+
 # testing
 /coverage
 
